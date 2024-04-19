@@ -76,11 +76,15 @@ def read_automaton():
         FiniteAutomaton: Object representing the read automaton.
     """
     num_states = int(input("Number of states (1 <= n <= 10): "))
-    states = [i for i in range(num_states)]
+    if num_states < 1 or num_states > 10:
+        print("Number of states must be between 1 and 10.")
+        return 1
+    else:
+        states = [chr(ord('0') + i) for i in range(num_states)]
 
     alphabet = input("Enter the terminal symbols, separated by space (example: 2 a b): ").split()[1:11]
     
-    acceptance_states = [int(x) for x in input("Enter the acceptance states (0 to 9) separated by space: ").split()[1:11]]
+    acceptance_states = [x for x in input("Enter the acceptance states (0 to 9) separated by space: ").split()[1:11]]
     
     num_transitions = int(input("Number of transitions (maximum 50): "))
     transitions = {}
@@ -92,7 +96,7 @@ def read_automaton():
             transitions[current_state] = {}
         transitions[current_state][symbol] = next_state
 
-    return FiniteAutomaton(states, alphabet, transitions, 0, acceptance_states)
+    return FiniteAutomaton(states, alphabet, transitions, '0', acceptance_states)
 
 if __name__ == "__main__":
     automaton = read_automaton()
@@ -102,6 +106,6 @@ if __name__ == "__main__":
 
     for string in strings:
         if automaton.accepts(string):
-            print(f"The string '{string}' is accepted by the automaton.")
+            print("aceita")
         else:
-            print(f"The string '{string}' is rejected by the automaton.")
+            print("rejeita")

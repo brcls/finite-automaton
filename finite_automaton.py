@@ -85,7 +85,7 @@ def read_automaton():
         states = [chr(ord('0') + i) for i in range(num_states)]  # Naming states as '0', '1', ..., '9'
 
         # Read the alphabet symbols
-        alphabet = input("Enter the number of terminal symbols, and then what they are, separated by space, example: 2 a b (maximum 10):").split()[1:]
+        alphabet = input("Enter the number of terminal symbols, and then what they are, separated by space, example: 2 a b (maximum 10): ").split()[1:]
         if len(alphabet) > 10:
             raise ValueError("Number of alphabet symbols must be at most 10.")
 
@@ -108,7 +108,7 @@ def read_automaton():
 
         # Read the transitions
         for _ in range(num_transitions):
-            transition = input("Enter the transition in the format q x q', where q, q' ∈ Q, x ∈ Σ ∪ {-}: ").split()[:2]
+            transition = input("Enter the transition in the format q x q', where q, q' ∈ Q, x ∈ Σ ∪ {-}: ").split()[:3]
             current_state, symbol, next_state = transition
 
             if current_state not in transitions:
@@ -136,7 +136,9 @@ def read_strings():
         if num_strings > 10:
             raise ValueError("Number of strings must be at most 10.")
 
-        return [input(f"Enter string {i+1}: ")[:20] for i in range(num_strings)]
+        strings = [input(f"Enter string {i+1}: ")[:20] for i in range(num_strings)]
+
+        return strings
 
     except ValueError as e:
         print("Error while reading input strings:", e)
@@ -154,9 +156,9 @@ if __name__ == "__main__":
         # Test each input string against the automaton
         for string in strings:
             if automaton.accepts(string):
-                print("Accepted")  # Accepts the string
+                print("aceita")  # Accepts the string
             else:
-                print("Rejected")  # Rejects the string
+                print("rejeita")  # Rejects the string
 
     except ValueError as e:
         print("Exception encountered:", e)

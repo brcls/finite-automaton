@@ -1,0 +1,10 @@
+Como rodar o executavel do programa:
+
+1 - Abrir pasta "executavel"
+2 - Dar dois cliques no arquivo chamado "finite_automaton.exe"
+
+Forma alternativa de rodar o programa via terminal:
+
+1 - Abrir pasta "executavel"
+2 - Abrir Windows PowerShell/Prompt de Comando
+3 - Rodar o comando ".\finite_automaton.exe"
